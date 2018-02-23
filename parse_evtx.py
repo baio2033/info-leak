@@ -22,7 +22,8 @@ def get_child(node, tag, ns="{http://schemas.microsoft.com/win/2004/08/events/ev
 	return node.find("%s%s"%(ns,tag))
 
 def getUSBlog(evtxfile):
-	result = open('usb_eventlog.csv','w')
+	os.mkdir('result')
+	result = open('./result/usb_eventlog.csv','w')
 	result.write('EventID,Time,Event,Product,SerialNum,lifetime\n')
 	vendor, product, revision, serialNum, lifetime = "", "", "", "", ""
 	with evtx.Evtx(evtxfile) as log:
@@ -75,7 +76,15 @@ def getUSBlog(evtxfile):
 
 
 if __name__=="__main__":
-	evt_path = "C:\Windows\Sysnative\winevt\Logs\Microsoft-Windows-DriverFrameworks-UserMode%4Operational.evtx"
-	evt_name = "Microsoft-Windows-DriverFrameworks-UserMode%4Operational.evtx"
+	"""
+	# TEST
+	evt_name = "./sample/Microsoft-Windows-DriverFrameworks-UserMode%4Operational.evtx"
 	getUSBlog(evt_name)
+	"""
+	evt_path = "C:\Windows\Sysnative\winevt\Logs\Microsoft-Windows-DriverFrameworks-UserMode%4Operational.evtx"
+	evt_name = "./sample/Microsoft-Windows-DriverFrameworks-UserMode%4Operational.evtx"
+	if os.path.isfile(evt_name):
+		getUSBlog(evt_name)
+	else:
+		print "\n[-] Error! \n\n\t [" + evt_path + "] doesn't exist!\n"
 
