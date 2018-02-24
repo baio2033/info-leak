@@ -12,7 +12,7 @@ def cvtPath(p):
 def exportHIVE(vol):
 	if os.path.isdir('./export') == False:
 		os.mkdir('./export')
-		
+
 	img = pytsk3.Img_Info('\\\\.\\'+vol)
 	fs_info = pytsk3.FS_Info(img)
 
@@ -110,9 +110,8 @@ if __name__=="__main__":
 
 	print "\nExtract Hive files\n"
 
-	#os.mkdir("./export")
 	rootVol = os.environ['WINDIR'][:2]
-	#exportHIVE(rootVol)
+	exportHIVE(rootVol)
 
 	hive_file = ['./export/NTUSER.DAT','./export/UsrClass.dat']
 

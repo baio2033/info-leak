@@ -82,9 +82,8 @@ if __name__=="__main__":
 	getUSBlog(evt_name)
 	"""
 	evt_path = "C:\Windows\Sysnative\winevt\Logs\Microsoft-Windows-DriverFrameworks-UserMode%4Operational.evtx"
-	evt_name = "./sample/Microsoft-Windows-DriverFrameworks-UserMode%4Operational.evtx"
-	if os.path.isfile(evt_name):
-		getUSBlog(evt_name)
+	if os.path.isfile(evt_path):
+		getUSBlog(evt_path)
 	else:
 		print "\n[-] Error! \n\n\t [" + evt_path + "] doesn't exist!\n"
 

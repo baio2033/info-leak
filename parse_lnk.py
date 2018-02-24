@@ -182,7 +182,7 @@ if __name__ == "__main__":
     os.mkdir('./result')
 
   result = open('./result/lnk_result.csv','w')
-  result.write('FileName,mtime,atime,ctime,Target-mtime,Target-atime,Target-ctime,FileSize,FileAttr,DriveSerial,VolumeID\n')
+  result.write('FileName,mtime,atime,ctime,Target-mtime,Target-atime,Target-ctime,FileSize,FileAttr,BasePath,VolumeID\n')
 
   cnt = 0
   for (path, dir, files) in os.walk(vol):
@@ -193,7 +193,7 @@ if __name__ == "__main__":
           global line
           line = ""
           fpath = path + "\\" + filename
-          print(fpath)
+          #print(fpath)
           mtime = str(convertTime(os.path.getmtime(fpath)))
           atime = str(convertTime(os.path.getatime(fpath)))
           ctime = str(convertTime(os.path.getctime(fpath)))
